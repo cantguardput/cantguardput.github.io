@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif; /* Menggunakan Georgia untuk teks */
+      background-color: #fce4ec; /* Background warna sesuai permintaan */
+      padding: 20px;
+      color: #333;
+      margin: 0;
+    }
+
+    h1 {
+      color: #4b3c40;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Georgia', serif; /* Georgia untuk judul */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #4b3c40;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .form-input {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .form-input label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #4b3c40;
+    }
+
+    .form-input input,
+    .form-input textarea {
+      width: 90%; /* Mengatur lebar input dan textarea agar sesuai dengan lebar tombol */
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      background-color: #f9f9f9;
+    }
+
+    .form-input textarea {
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4b3c40;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 90%; /* Lebar tombol agar sesuai dengan input dan textarea */
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffb6c1;
+    }
+
+    .back-button {
+      background-color: #ffb6c1;
+      border: none;
+      padding: 10px;
+      width: 90%;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+    .back-button:hover {
+      background-color: #f5a3bc;
+    }
+
+    .section-content {
+      margin-top: 30px;
+    }
+
+    .item {
+      background-color: #f8f8f8;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border-left: 5px solid #4b3c40;
+    }
+
+    .item p {
+      font-size: 1.1rem;
+      color: #4b3c40;
+    }
+
+    .item .edit-btn,
+    .item .delete-btn {
+      cursor: pointer;
+      margin-left: 10px;
+      color: #4b3c40;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .item .delete-btn {
+      color: red;
+    }
+
+    .item .edit-btn:hover,
+    .item .delete-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Adjusting form width */
+    .form-input input, .form-input textarea, button {
+      width: 90%; /* Ensure all form elements have the same width */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Dashboard</h1>
+  <div class="container">
+    <!-- About Me Section -->
+    <div class="section" id="about-section">
+      <h2>About Me</h2>
+      <form id="about-form" class="form-input">
+        <label for="about-text">About Me</label>
+        <textarea id="about-text" rows="5"></textarea>
+        <button type="submit">Update About Me</button>
+      </form>
+      <div class="section-content" id="about-content"></div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="section" id="description-section">
+      <h2>Description</h2>
+      <form id="description-form" class="form-input">
+        <label for="description-text">Description</label>
+        <textarea id="description-text" rows="5"></textarea>
+        <button type="submit">Update Description</button>
+      </form>
+      <div class="section-content" id="description-content"></div>
+    </div>
+
+    <!-- Recent Project Section -->
+    <div class="section" id="project-section">
+      <h2>Recent Projects</h2>
+      <form id="project-form" class="form-input">
+        <label for="project-name">Project Name</label>
+        <input type="text" id="project-name" />
+        <label for="project-url">Project URL</label>
+        <input type="url" id="project-url" />
+        <button type="submit">Add Project</button>
+      </form>
+      <div class="section-content" id="project-content"></div>
+    </div>
+
+    <!-- Activity Section -->
+    <div class="section" id="activity-section">
+      <h2>Activity</h2>
+      <form id="activity-form" class="form-input">
+        <label for="activity-title">Activity Title</label>
+        <input type="text" id="activity-title" />
+        <label for="activity-description">Activity Description</label>
+        <textarea id="activity-description" rows="3"></textarea>
+        <button type="submit">Add Activity</button>
+      </form>
+      <div class="section-content" id="activity-content"></div>
+    </div>
+
+    <!-- Article Section -->
+    <div class="section" id="article-section">
+      <h2>Articles</h2>
+      <form id="article-form" class="form-input">
+        <label for="article-title">Article Title</label>
+        <input type="text" id="article-title" />
+        <label for="article-content">Article Content</label>
+        <textarea id="article-content" rows="5"></textarea>
+        <button type="submit">Add Article</button>
+      </form>
+      <div class="section-content" id="article-content"></div>
+    </div>
+
+    <!-- Social Section -->
+    <div class="section" id="social-section">
+      <h2>Social Media Links</h2>
+      <form id="social-form" class="form-input">
+        <label for="social-link">Social Media Link</label>
+        <input type="url" id="social-link" />
+        <button type="submit">Add Social Link</button>
+      </form>
+      <div class="section-content" id="social-content"></div>
+    </div>
+  </div>
+
+  <button class="back-button" onclick="goBack()">Back to Previous Page</button>
+
+  <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore-compat.js"></script>
+  <script>
+    // Go back to the previous page
+    function goBack() {
+      window.history.back();
+    }
+
+    // Check if admin is logged in
+    if (localStorage.getItem("isAdmin") !== "true") {
+      alert("Only admin can access this page!");
+      window.location.href = "index.html"; // Redirect to login or home
+    }
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID",
+      measurementId: "YOUR_MEASUREMENT_ID"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+
+    // CRUD operations for each section
+    function renderData(collection, contentDiv) {
+      db.collection(collection).get().then((querySnapshot) => {
+        contentDiv.innerHTML = ''; // Clear current content
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const itemDiv = document.createElement('div');
+          itemDiv.classList.add('item');
+          itemDiv.innerHTML = `
+            <p>${data.text || data.name || data.title}</p>
+            <span class="edit-btn" onclick="editItem('${collection}', '${doc.id}')">Edit</span>
+            <span class="delete-btn" onclick="deleteItem('${collection}', '${doc.id}')">Delete</span>
+          `;
+          contentDiv.appendChild(itemDiv);
+        });
+      });
+    }
+
+    // Add or update data
+    function saveData(collection, data) {
+      db.collection(collection).add(data)
+        .then(() => {
+          alert("Data saved successfully!");
+          renderData(collection, document.getElementById(`${collection}-content`));
+        })
+        .catch((error) => {
+          alert("Error adding document: " + error);
+        });
+    }
+
+    // Edit item
+    function editItem(collection, id) {
+      db.collection(collection).doc(id).get().then((doc) => {
+        const data = doc.data();
+        if (collection === 'about') {
+          document.getElementById('about-text').value = data.text;
+        }
+        // Add more conditions based on sections (article, project, etc.)
+      });
+    }
+
+    // Delete item
+    function deleteItem(collection, id) {
+      db.collection(collection).doc(id).delete().then(() => {
+        alert("Data deleted successfully!");
+        renderData(collection, document.getElementById(`${collection}-content`));
+      }).catch((error) => {
+        alert("Error deleting document: " + error);
+      });
+    }
+
+    // Event listeners for form submission
+    document.getElementById('about-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const text = document.getElementById('about-text').value;
+      saveData('about', { text });
+    });
+
+    // Similarly, add event listeners for other sections (description, project, etc.)
+
+    // Initial render
+    renderData('about', document.getElementById('about-content'));
+    renderData('description', document.getElementById('description-content'));
+    renderData('project', document.getElementById('project-content'));
+    renderData('activity', document.getElementById('activity-content'));
+    renderData('article', document.getElementById('article-content'));
+    renderData('social', document.getElementById('social-content'));
+  </script>
+
+</body>
+</html>

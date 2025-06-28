@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <style>
+    /* Reset dan global */
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #f8e8ef, #fce4ec);
+      color: #333;
+    }
+
+    /* Header background ala home tapi lebih pendek */
+    .contact-header {
+      background-image: url('assets/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 40vh;
+    }
+
+    /* Navbar style */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Logo Section */
+    .navbar .logo {
+      height: 65px;
+      margin-left: 1rem; /* geser kanan sedikit */
+    }
+
+    /* Menu Items */
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Menu Links */
+    .navbar a {
+      text-decoration: none;
+      font-style: italic;
+      font-weight: bold;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    /* Active Link */
+    .navbar a.active {
+      color: #4b3c40;
+    }
+
+    /* Hover Effect */
+    .navbar a:hover {
+      color: #ffb6c1;
+    }
+
+    /* User Icon Section */
+    .user-icon {
+      height: 32px;
+      margin-right: 1rem;
+      display: block;
+    }
+
+/* Kontainer Formulir Kontak */
+.contact-form-container {
+  background-color: #f8e8ef;
+  padding: 2rem 1rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Membuat kontainer memenuhi layar */
+}
+
+/* Box Formulir */
+.contact-form-box {
+  background-color: #FFD0E1;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Center box */
+}
+
+/* Judul Formulir */
+.contact-form-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #4b3c40;
+}
+
+/* Gaya Form Input */
+.contact-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%; /* Membuat lebar input, textarea, dan tombol sama */
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-top: 0.5rem;
+  box-sizing: border-box; /* Menjaga padding tidak menambah lebar elemen */
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+    /* Tombol Kirim Pesan */
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: #ffb6c1;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+  background-color: #4b3c40;
+    }
+
+    /* Responsif untuk mobile */
+    @media (max-width: 768px) {
+      .contact-form-box {
+        padding: 1.5rem;
+      }
+    }
+
+/* Kontainer Sosial Media */
+.social-media-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Membagi menjadi 6 kolom di baris pertama */
+  grid-template-rows: repeat(2, auto); /* Menyesuaikan baris pertama dan kedua */
+  gap: 20px 20px; /* Jarak horizontal 20px, vertikal 20px (jarak antar baris dan kolom) */
+  justify-items: center; /* Menyusun ikon di tengah setiap kolom */
+  background-color: #f8e8ef; /* Sama seperti background section sebelumnya */
+  padding: 20px 20px; /* Menambahkan padding untuk jarak atas dan bawah */
+  border-radius: 12px; /* Menambahkan sudut melengkung */
+  margin-top: -10px; /* Mengurangi jarak antar section */
+  margin-bottom: 30px; /* Memberikan jarak bawah */
+}
+
+/* Baris kedua dengan 5 ikon */
+.social-media-container .social-media-item:nth-child(n+7) {
+  grid-column: span 1; /* Menjamin agar hanya 5 item di baris kedua */
+}
+
+/* Item Sosial Media */
+.social-media-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px; /* Ukuran ikon */
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px; /* Memberikan jarak antar ikon */
+  background-color: transparent; /* Menghilangkan background putih */
+}
+
+/* Efek hover pada ikon */
+.social-media-item:hover {
+  transform: scale(1.1); /* Membuat ikon sedikit membesar saat hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ukuran gambar di dalam ikon sosial media */
+.social-media-item img {
+  width: 100%; /* Membuat gambar mengambil seluruh ruang ikon */
+  height: 100%; /* Membuat gambar mengambil seluruh ruang ikon */
+  object-fit: cover; /* Menjaga agar gambar tetap proporsional */
+}
+
+    /* Sidebar */
+    #sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;  /* Ubah posisi ke kanan */
+      width: 250px;
+      height: 100%;
+      background-color: #f8f8f8;
+      padding: 20px;
+      box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);  /* Sesuaikan shadow dengan sisi kanan */
+    }
+
+    #sidebar button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #4b3c40;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    #sidebar button:hover {
+      background-color: #ffb6c1;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Header dengan background gambar -->
+  <header class="contact-header">
+    <nav class="navbar">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="article.html">Article</a></li>
+          <li><a href="contact.html" class="active">Contact Me</a></li>
+        </ul>
+      <img src="assets/user.png" alt="User Icon" class="user-icon" onclick="toggleSidebar()"/>
+    </nav>
+  </header>
+
+  <!-- Section Kontak - Formulir Pengiriman Pesan -->
+  <section class="contact-form-container">
+    <div class="contact-form-box">
+        <h2>Hubungi Saya</h2>
+        <form action="send_email.php" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subjek:</label>
+                <input type="text" id="subject" name="subject" required placeholder="Masukkan subjek pesan">
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan:</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Tulis pesan Anda di sini"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Kirim Pesan</button>
+        </form>
+    </div>
+</section>
+
+
+<!-- Section Sosial Media -->
+<section class="social-media-container">
+  <div class="social-media-item">
+    <a href="https://facebook.com/jvinyoung" class="icon" target="_blank">
+      <img src="assets/facebook.png" alt="Facebook">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://instagram.com/faa_mnd" class="icon" target="_blank">
+      <img src="assets/instagram.png" alt="Instagram">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://wa.me/6281264576914" class="icon" target="_blank">
+      <img src="assets/whatsapp.png" alt="WhatsApp">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://t.me/AsshLynx" class="icon" target="_blank">
+      <img src="assets/telegram.png" alt="Telegram">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://x.com/joochnan" class="icon" target="_blank">
+      <img src="assets/x.png" alt="X">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://youtube.com/@afaamanda" class="icon" target="_blank">
+      <img src="assets/youtube.png" alt="YouTube">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://github.com/Amanda-Faatihah-Aulia" class="icon" target="_blank">
+      <img src="assets/github.png" alt="GitHub">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://discord.com/users/1033023754026102804" class="icon" target="_blank">
+      <img src="assets/discord.png" alt="Discord">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://linkedin.com/in/amanda-faatihah-aulia" class="icon" target="_blank">
+      <img src="assets/linkedin.png" alt="LinkedIn">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://threads.net/@faa_mnd" class="icon" target="_blank">
+      <img src="assets/threads.png" alt="Threads">
+    </a>
+  </div>
+  <div class="social-media-item">
+    <a href="https://tiktok.com/@afaamanda" class="icon" target="_blank">
+      <img src="assets/tiktok.png" alt="TikTok">
+    </a>
+  </div>
+</section>
+
+  <!-- Sidebar untuk Login Admin -->
+  <div id="sidebar">
+    <button onclick="window.location.href='admin-login.html'">Login ke Admin</button>
+    <button onclick="window.location.href='admin-dashboard.html'">Dashboard Admin</button>
+  </div>
+
+  <script>
+    // Fungsi untuk toggle tampilan sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.style.display === 'none') {
+            sidebar.style.display = 'block';
+        } else {
+            sidebar.style.display = 'none';
+        }
+    }
+  </script>
+</body>
+</html>

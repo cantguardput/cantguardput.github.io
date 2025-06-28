@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif; /* Menggunakan Georgia untuk teks */
+      background-color: #fce4ec;
+      padding: 20px;
+      color: #333;
+      margin: 0;
+    }
+
+    h1 {
+      color: #4b3c40;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Georgia', serif; /* Georgia untuk judul */
+    }
+
+    .login-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-input {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-input label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #4b3c40;
+    }
+
+    .form-input input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4b3c40;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffb6c1;
+    }
+
+    .back-button {
+      background-color: #ffb6c1;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+    .back-button:hover {
+      background-color: #f5a3bc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Login</h1>
+  <div class="login-container">
+    <form id="login-form">
+      <div class="form-input">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Login</button>
+      <div class="form-input">
+        <button type="button" class="back-button" onclick="goBack()">Back</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Go back to the previous page
+    function goBack() {
+      window.history.back();
+    }
+
+    // Handle form submission
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var errorMessage = document.getElementById('error-message');
+
+      // Check if username and password are correct
+      if (username === "afaamanda" && password === "afaa691406") {
+        localStorage.setItem("isAdmin", "true");
+        window.location.href = "admin-dashboard.html"; // Redirect to dashboard
+      } else {
+        errorMessage.textContent = "Username or password is incorrect!";
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Article</title>
+  <style>
+    /* Reset dan global */
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #f8e8ef, #fce4ec);
+      color: #333;
+    }
+
+    /* Header background ala home tapi lebih pendek */
+    .article-header {
+      background-image: url('assets/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 40vh;
+    }
+
+    /* Navbar style */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Logo Section */
+    .navbar .logo {
+      height: 65px;
+      margin-left: 1rem; /* geser kanan sedikit */
+    }
+
+    /* Menu Items */
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Menu Links */
+    .navbar a {
+      text-decoration: none;
+      font-style: italic;
+      font-weight: bold;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+/* Active Link */
+    .navbar a.active {
+      color: #4b3c40;
+    }
+
+    /* Hover Effect */
+    .navbar a:hover {
+      color: #ffb6c1;
+    }
+
+    /* User Icon Section */
+    .user-icon {
+      height: 32px;
+      margin-right: 1rem;
+      display: block;
+    }
+
+    /* Article Style*/
+
+    .article-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .article-card {
+      background-color: #FFD0E1;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease;
+      display: block;
+      cursor: pointer;
+    }
+
+    .article-card img {
+      width: 100%;               /* Gambar akan mengikuti lebar kontainer */
+      height: 200px;             /* Tentukan tinggi yang konsisten */
+      object-fit: cover;         /* Gambar akan terpotong dan menutupi area tanpa merusak proporsi */
+      border-radius: 8px;        /* Untuk membulatkan sudut gambar */
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .article-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-card p {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;  /* Ubah posisi ke kanan */
+      width: 250px;
+      height: 100%;
+      background-color: #f8f8f8;
+      padding: 20px;
+      box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);  /* Sesuaikan shadow dengan sisi kanan */
+    }
+
+    #sidebar button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #4b3c40;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    #sidebar button:hover {
+      background-color: #ffb6c1;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Header dengan background gambar -->
+  <header class="article-header">
+    <nav class="navbar">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="article.html" class="active">Article</a></li>
+          <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+      <img src="assets/user.png" alt="User Icon" class="user-icon" onclick="toggleSidebar()"/>
+    </nav>
+  </header>
+
+  <!-- Article Cards Section -->
+  <section class="article-section">
+    <a href="https://ulasan.co/banyan-tree-bintan-dan-fttk-umrah-sukses-gelar-kompetisi-augmented-reality/" target="_blank" class="article-card">
+      <img src="assets/artikel1.png" alt="Article 1" />
+      <p>Banyan Tree Bintan dan FTTK UMRAH Sukses Gelar Kompetisi Augmented Reality</p>
+    </a>
+    <a href="https://batamtv.com/fttk-umrah-bekerjasama-dengan-banyan-tree-bintan-gelar-kompetisi-augmented-reality-hasilkan-ratusan-karya/" target="_blank" class="article-card">
+      <img src="assets/artikel2.png" alt="Article 2" />
+      <p>FTTK UMRAH Bekerjasama dengan Banyan Tree Bintan Gelar Kompetisi AR Hasilkan Ratusan Karya</p>
+    </a>
+    <a href="https://www.tempo.co/gaya-hidup/asparnas-kepri-fest-2023-digelar-di-tanjungpinang-majukan-pariwisata-dan-umkm-lokal-117747" target="_blank" class="article-card">
+      <img src="assets/artikel3.png" alt="Article 3" />
+      <p>Asparnas Kepri Fest 2023 Digelar di Tanjungpinang, Majukan Pariwisata dan UMKM Lokal</p>
+    </a>
+    <a href="https://ulasan.co/keseruan-cosplayer-tampil-di-asparnas-fest-2023-mall-tcc-tanjungpinang/" target="_blank" class="article-card">
+      <img src="assets/artikel4.png" alt="Article 4" />
+      <p>Keseruan Cosplayer Tampil di Asparnas Fest 2023 Mall TCC Tanjungpinang</p>
+    </a>
+    <a href="https://kepri.antaranews.com/berita/213429/disbudpar-tanjungpinang-gelar-bazar-umkm-kreatif-di-setiap-akhir-pekan"target="_blank"  class="article-card">
+      <img src="assets/artikel5.png" alt="Article 5" />
+      <p>Disbudpar Tanjungpinang gelar bazar umkm kreatif di setiap akhir pekan</p>
+    </a>
+    <a href="https://ulasan.co/yuk-meriahkan-bazar-street-food-bintan-centre-malam-ini-puluhan-cosplayer-akan-tampil/" target="_blank" class="article-card">
+      <img src="assets/artikel6.png" alt="Article 6" />
+      <p>Yuk Meriahkan Bazar Street Food Bintan Centre! Malam Ini Puluhan Cosplayer Akan Tampil</p>
+    </a>
+  </section>
+
+  <!-- Sidebar untuk Login Admin -->
+  <div id="sidebar">
+    <button onclick="window.location.href='admin-login.html'">Login ke Admin</button>
+    <button onclick="window.location.href='admin-dashboard.html'">Dashboard Admin</button>
+  </div>
+
+  <script>
+    // Fungsi untuk toggle tampilan sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.style.display === 'none') {
+            sidebar.style.display = 'block';
+        } else {
+            sidebar.style.display = 'none';
+        }
+    }
+  </script>
+
+</body>
+</html>
